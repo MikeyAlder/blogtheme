@@ -1,41 +1,61 @@
 {{!< default}}
 
-<div id="latest-post" class="container">
+{{> header-ii}}
+
+<main id="wrapper" role="main">
+    
+    <img src="/assets/images/logo.png" alt="MikeyAlder" class="site_logo">
+
+
+    {{!-- Headline --}}
+        <div class="container full">
+
+            {{!-- Output the first post on pagination --}}
+            {{#foreach posts}}
+                {{#if @first}}
+            <article class="post excerpt container">
+        <header>
+
+            {{!-- post date --}}
+            <time class="post date" datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
+
+            {{!-- post title --}}
+            <h2><a href="{{url}}">{{title}}</a></h2>
+            <div class="post_image">{{content words="0"}}</div>
+            <p>{{excerpt}} ...</p>
+            <a href="{{url}}" class="btn btn-primary btn_right">Read More</a>
+
+        </header>
+    </article>
+                {{/if}}
+            {{/foreach}}
+    </div>{{!-- /Headline --}}
+
+
+
+    {{!-- Output the rest of the posts --}}
     {{#foreach posts}}
-        {{#if @first}}
-            <article class="{{post_class}}">
-                <header class="post-header">
-                    <h1 class="post-title">{{title}}</h1>
+    {{#unless @first}}
+    <article class="post excerpt container">
+        <header>
 
-                    <p class="post-date"><time datetime="{{published_at}}">Published {{date format="MMMM Do YYYY"}}</time></p>
-                </header>
+            {{!-- post date --}}
+            <time class="post date" datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
 
-                <div class="post-content">
-                    {{{content}}}
+            {{!-- post title --}}
+            <h2><a href="{{url}}">{{title}}</a></h2>
 
-                    {{#if tags}}
-                        <p class="post-tags"><span>Tagged:</span> {{tags}}</p>
-                    {{/if}}
-                </div>
-            </article>
-        {{/if}}
+        </header>
+    </article>
+    {{/unless}}
     {{/foreach}}
-</div>
 
-<div id="post-index" class="container">
-    <ol class="post-list">
-        {{#foreach posts}}
-            <li class="post-stub">
-                <a class="js-ajax-link"  title="{{title}}" href="{{url}}">
-                    <h4 class="post-stub-title">{{title}}</h4>
-
-                    <time class="post-stub-date" datetime="{{published_at}}">Published {{date format="MMMM Do YYYY"}}</time>
-                </a>
-            </li>
-        {{/foreach}}
-    </ol>
-
-    <div class="post-navigation">
+    {{!-- Output pagination --}}
+    <div class="pagination holder">
         {{pagination}}
     </div>
-</div>
+
+</main>
+
+<!-- FOOTER-->
+{{> footer}}

@@ -1,21 +1,116 @@
 {{!< default}}
 
-<div class="container">
+{{> header-ii}}
+
+<main id="wrapper">
+
+    {{!-- The Post --}}
     {{#post}}
-        <article class="{{post_class}}">
-            <header class="post-header">
-                <h1 class="post-title">{{title}}</h1>
+    <article id="main-content-area" class="{{post_class}} container full" role="main">
 
-                <p class="post-date"><time datetime="{{published_at}}">Published {{date format="MMMM Do YYYY"}}</time></p>
-            </header>
+        {{!-- Post Header --}}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-3">
+                    <a href="{{@blog.url}}" title="Back" class="back_btn">Table of Contents</a>
+                    {{!-- Post icon --}}
+                    <!--<i class="post icon aecon-bookmark"></i>-->
 
-            <div class="post-content">
-                {{{content}}}
+                    {{!-- Post Meta Top --}}
+                    <div class="post meta">
 
-                {{#if tags}}
-                    <p class="post-tags"><span>Tagged:</span> {{tags}}</p>
-                {{/if}}
+                        {{!-- Post Date --}}
+                        <time class="post date" datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
+
+                        <!--<div class="dot separator">.</div>-->
+                        
+                        {{!-- Post Author --}}
+                        <!--<span class="post author">{{author.name}}</span>-->
+
+                    </div>
+
+                    {{!-- Post Title --}}
+                    <header>
+                        <h1>{{{title}}}</h1>
+                    </header>
+
+                </div>
             </div>
-        </article>
+        </div>
+
+        {{!-- Post Content --}}
+        <div class="post content">
+            <div class="container">
+                <div class="row">
+
+
+                    {{!-- The Content --}}
+                    <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-3 the content">
+                        {{content}}
+                    </div>
+
+                    {{!-- Leave A Comment --}}
+                    <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 col-lg-offset-3">
+                        
+                        <aside class="in-post meta comment_panel">
+
+                            <p>Want to leave a comment? Discuss the post on <a href="http://www.twitter.com/MikeyAlder">Twitter</a> where I'll definetly reply to your comments.</p>
+                            <p>You can follow me <a href="http://www.twitter.com/MikeyAlder">@MikeyAlder</p>
+
+                        </aside>
+
+                        {{!-- Tags --}}
+                        <!--<aside class="in-post meta">
+
+                            {{!-- Meta Section Title --}}
+                            <h4 class="half stretched">Tags</h4>
+
+                            {{!-- Meta Section Content --}}
+                            <div class="meta content">
+
+                                {{!-- Tags Meta --}}
+                                <p class="meta taxonomy">{{#if tags}}{{tags separator=", "}}{{/if}}
+                                </p>
+                            </div>
+
+                        </aside>-->
+
+
+                        {{!-- Share --}}
+                        <aside class="in-post meta center_text">
+
+                            {{!-- Meta Section Title --}}
+                            <h4 class="half stretched">Share this post</h4>
+
+                            {{!-- Meta Section Content --}}
+                            <div class="meta content">
+
+                                {{!-- Share Meta --}}
+                                <div class="meta social">
+                                    <a href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="icon-twitter-bird"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"><i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="https://plus.google.com/share?url={{url absolute="true"}}" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"><i class="icon-googleplus-rect"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </aside>
+                        <a href="#top" title="Top" class="back_btn top_btn">Top</a>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
     {{/post}}
-</div>
+
+</main>
+
+<!-- FOOTER-->
+{{> footer}}
