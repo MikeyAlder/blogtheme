@@ -622,7 +622,7 @@ input::-webkit-input-placeholder {
 -------------------------------------------------------------------*/
 
 .navbar {
-  min-height: 30px;
+  min-height: 10px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
   background: white;
@@ -639,7 +639,7 @@ input::-webkit-input-placeholder {
 
 @media screen and (min-width: 768px) {
   .navbar {
-    min-height: 30px;
+    min-height: 10px;
   }
 
   .navbar > .container {
