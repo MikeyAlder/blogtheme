@@ -1534,4 +1534,4 @@ footer a:hover {
 }
 
 .post_image { text-align: center; }
-.post_image img { max-height: 250px; border: 10px solid #ccc; max-width: 650px; }
+.post_image img { max-height: 250px; max-width: 745px; }
